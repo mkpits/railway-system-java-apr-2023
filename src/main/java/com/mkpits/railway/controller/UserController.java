@@ -30,6 +30,6 @@ public class UserController {
     public String findAllUserList(Model model) {
        List<User> userList=userService.findAllUserList();
        model.addAttribute("userList",userList);
-         return "index";
+         return "/admin/index";
     }
 }
