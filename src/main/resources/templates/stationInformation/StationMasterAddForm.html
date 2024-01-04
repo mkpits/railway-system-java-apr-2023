@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Railway Station Add Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e6e6e6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333333;
+        }
+
+        input, select, button {
+            margin-bottom: 15px;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        input[type="datetime-local"] {
+            font-size: 12px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<form th:action="@{addmaster}" th:object="${master}" method="post">
+    <h1>Railway Station Add Form</h1>
+    <input type="hidden" th:field="*{station_id}">
+    <input type="text" th:field="*{station_name}" name="name" placeholder="Enter the Station Name">
+    <select th:field="*{station_type}">
+        <option value="Terminal">Terminal</option>
+        <option value="Junction">Junction</option>
+        <option value="Central">Central</option>
+        <option value="local">Local</option>
+    </select>
+    <input type="text" th:field="*{station_code}" placeholder="Enter the station code">
+    <input type="datetime-local" th:field="*{station_update}" placeholder="Enter the last code">
+    <button type="submit" th:value="submit">Submit</button>
+</form>
+
+</body>
+</html>
