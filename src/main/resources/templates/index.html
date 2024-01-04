@@ -1,13 +1,48 @@
 <!DOCTYPE html>
-<html lang="en " xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>indexPage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
 <body>
-<form  th:action="@{/index}" method="post" >
-    <h1>This is index page.</h1>
-</form>
+<form >
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6 center">
+        <a th:href="@{/users/list}">Add</a>
+        <table class="table table-hover">
+            <tr>
+                <th>User Id</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth </th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Mobile Number</th>
+            </tr>
+            <tr th:each="count:${userList}">
+                <td th:text="${count.user_Id}"></td>
+                <td th:text="${count.first_Name}"></td>
+                <td th:text="${count.middle_Name}"></td>
+                <td th:text="${count.last_Name}"></td>
+                <td th:text="${count.date_Of_Birth}"></td>
+                <td th:text="${count.gender}"></td>
+                <td th:text="${count.email}"></td>
+                <td th:text="${count.mobile_No}"></td>
+            </tr>
+        </table>
+    </div>
 
+    <!--    <label for="country">Select a country:</label>-->
+    <!--    <select id="country" name="country">-->
+    <!--        <option th:each="country : ${countryList}"-->
+    <!--                th:value="${country.country_id}" -->
+    <!--                th:text="${country.country_Name}">-->
+
+    <!--        </option>-->
+    <!--    </select>-->
+</form>
 </body>
 </html>
