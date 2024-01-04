@@ -5,9 +5,7 @@ import com.mkpits.railway.service.StationMasterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class StationMasterController {
@@ -29,7 +27,26 @@ public class StationMasterController {
     @PostMapping("/addmaster")
     public String postMasterDetails(@ModelAttribute("master") StationMaster stationMaster){
         stationMasterService.saveStation(stationMaster);
-        return "stationInformation/StationMasterAddForm";
+        return "redirect:/showrecord";
+
+    }
+    @GetMapping("/showrecord")
+    public String showRecordDetails(Model model){
+    model.addAttribute("station",stationMasterService.getAllList());
+    return "stationInformation/StationMasterShowPage";
+    }
+
+    @GetMapping("/stationInformation/StationMasterShowPage/delete/{station_id}")
+    public String deleterecord(@PathVariable int station_id){
+        stationMasterService.deleteById(station_id);
+        return"redirect:/showrecord";
+    }
+
+    @GetMapping("/updatestudent")
+    public String updaterecord(@RequestParam("station_id") int station_id, Model model){
+    StationMaster stationMaster=stationMasterService.updateById(station_id);
+    model.addAttribute("master", stationMaster);
+    return"stationInformation/StationMasterAddForm";
 
     }
 }

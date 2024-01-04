@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class StationMasterImplimentation implements StationMasterService {
         private StationMasterRepository stationMasterRepository;
@@ -21,5 +24,23 @@ public class StationMasterImplimentation implements StationMasterService {
     public String saveStation(@ModelAttribute("master") StationMaster stationMaster) {
         stationMasterRepository.save(stationMaster);
         return "Data Inserted";
+    }
+
+    @Override
+    public List<StationMaster> getAllList() {
+        return stationMasterRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public String deleteById(int station_id) {
+        stationMasterRepository.deleteById(station_id);
+        return "deleted";
+    }
+
+    @Override
+    public StationMaster updateById(Integer station_id) {
+        Optional<StationMaster> optionalStationMaster=stationMasterRepository.findById(station_id);
+        return optionalStationMaster.get();
     }
 }
