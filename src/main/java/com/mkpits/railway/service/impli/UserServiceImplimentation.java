@@ -1,7 +1,8 @@
-package com.mkpits.railway.service;
+package com.mkpits.railway.service.impli;
 
 import com.mkpits.railway.model.User;
 import com.mkpits.railway.repository.UserRepository;
+import com.mkpits.railway.service.UserService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserServiceImplimentation implements UserService{
+public class UserServiceImplimentation implements UserService {
     private UserRepository userRepository;
     @Autowired
     public UserServiceImplimentation(UserRepository userRepository) {
