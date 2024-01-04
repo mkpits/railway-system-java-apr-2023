@@ -24,9 +24,8 @@
             <td th:text="${count.state_Id}"></td>
             <td th:text="${count.state_Name}"></td>
                         <td><a class="btn btn-danger" >Delete</a></td>
-                        <td><a class="btn btn-primary" >Update</a></td>
-<!--            <td><a class="btn btn-danger" th:href="@{/Stationmastershow/delete/{station_id}(station_id=${sta.station_id})}">Delete</a></td>-->
-<!--            <td><a class="btn btn-primary" th:href="@{/updatestudent(station_id=${sta.station_id})}">Update</a></td>-->
+<!--                        <td><a class="btn btn-primary" >Update</a></td>-->
+            <td><a class="btn btn-primary" th:href="@{/states/update(state_id=${count.state_Id})}">Update</a></td>
         </tr>
         </tbody>
     </table>

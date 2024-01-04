@@ -11,6 +11,7 @@ public class State_Master {
     private int state_Id;
     @Column(name = "state_name")
     private String state_Name;
+
     public State_Master() {
     }
 
