@@ -8,7 +8,7 @@
 </head>
 <body>
 <center><h1>List of State</h1></center>
-<td><a class="btn btn-danger" th:href="@{/states/list}">Add State</a></td>
+<td><a class="btn btn-danger" th:href="@{/states/add}">Add State</a></td>
 <div class="container mt-5">
     <table class="table table-bordered">
         <thead class="thead-dark">
@@ -23,8 +23,10 @@
         <tr th:each="count: ${stateMasterList}">
             <td th:text="${count.state_Id}"></td>
             <td th:text="${count.state_Name}"></td>
-            <td><a class="btn btn-danger" th:href="@{/Stationmastershow/delete/{station_id}(station_id=${sta.station_id})}">Delete</a></td>
-            <td><a class="btn btn-primary" th:href="@{/updatestudent(station_id=${sta.station_id})}">Update</a></td>
+                        <td><a class="btn btn-danger" >Delete</a></td>
+                        <td><a class="btn btn-primary" >Update</a></td>
+<!--            <td><a class="btn btn-danger" th:href="@{/Stationmastershow/delete/{station_id}(station_id=${sta.station_id})}">Delete</a></td>-->
+<!--            <td><a class="btn btn-primary" th:href="@{/updatestudent(station_id=${sta.station_id})}">Update</a></td>-->
         </tr>
         </tbody>
     </table>

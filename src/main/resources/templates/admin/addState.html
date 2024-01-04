@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>state</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<form th:action="@{/states/save}" th:object="${stateMaster}"  method="post">
+    State Name : <input type="text" name="state_Name">
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
