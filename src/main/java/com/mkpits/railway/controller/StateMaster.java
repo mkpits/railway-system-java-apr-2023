@@ -45,11 +45,9 @@ public class StateMaster {
     }
     //    --------------------- Delete single State record by using state_id ---------------------
 
-    @DeleteMapping("/delete")
+    @GetMapping("/delete")
     public String delete(@RequestParam ("state_id") Integer state_id) {
-//        stateMasterService.findById(state_id);
         stateMasterService.delete(state_id);
-        return "/admin/displayStateList";
+        return "redirect:/states/list";
     }
-
 }
