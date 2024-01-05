@@ -31,8 +31,7 @@ public class StateMasterServiceImplementation implements StateMasterService {
 
     @Override
     public State_Master update(Integer state_id) {
-//         return findById(state_id);
-        return stateRepository.findById(state_id).get();
+         return findById(state_id);
     }
 
     @Override
