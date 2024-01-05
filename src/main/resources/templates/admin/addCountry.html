@@ -2,18 +2,14 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>country</title>
-    <link rel="stylesheet" th:href="@{cssFolder/Style.css}">
+    <title>state</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<form th:action="@{/student/save}" th:object="${accountDetails}"  method="post">
-    <!--    Username : <input type="text" th:field="*{username}">-->
-    Username : <input type="text" name="username">
-    Password:<input type="text" name="password">
-    First Name : <input type="text" name="first_Name">
-    Last Name : <input type="text" name="last_Name">
-    Balance : <input type="text" name="balance">
+
+<form th:action="@{/states/save}" th:object="${stateMaster}"  method="post">
+    State id : <input type="number" th:field="*{state_Id}" readonly>
+    State Name : <input type="text" th:field="*{state_Name}">
     <input type="submit" value="Submit">
 </form>
 </body>
