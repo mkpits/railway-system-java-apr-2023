@@ -6,8 +6,7 @@ import com.mkpits.railway.service.CityMasterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,22 +18,36 @@ public class CityMaster {
     public CityMaster(CityMasterService cityMasterService) {
         this.cityMasterService = cityMasterService;
     }
+//    ------------------------ Display all city records -------------------------------
     @GetMapping("/list")
     public String findAllCity(Model model) {
        List<City_Master> cityMasterList= cityMasterService.findAllCity();
         model.addAttribute("cityMasterList",cityMasterList);
         return "/admin/displayCityList";
     }
-//    -----------------------Update------------------------------------
-
-//public City_Master update(Integer city_Id) {
-//    return cityRepository.findById(city_Id).get();
-//}
-////--------------------------------------------------------------
-//
-//
-//    public void delete(Integer city_Id) {
-//        cityRepository.deleteById(city_Id);
-//
-//    }
+//    ----------------------- Insert city records ---------------------------
+    @GetMapping("/add")
+    public String insertData(Model model){
+        City_Master cityMaster=new City_Master();
+        model.addAttribute("cityMaster",cityMaster);
+        return "admin/addCity";
+    }
+    @PostMapping("/save")
+    public String save(@ModelAttribute ("cityMaster") City_Master cityMaster) {
+         cityMasterService.save(cityMaster);
+        return "redirect:/cities/list";
+    }
+//    ----------------------- Update single City record by using city_id ------------------------------------
+    @GetMapping("/update")
+    public String update(@RequestParam ("city_Id") Integer city_Id,Model model) {
+       City_Master cityMaster=cityMasterService.update(city_Id);
+        model.addAttribute("cityMaster",cityMaster);
+        return "admin/addCity";
+    }
+//    ----------------------------Delete single city record by using city_id ----------------------------------
+    @GetMapping("/delete")
+    public String delete(@RequestParam ("city_Id") Integer city_Id) {
+        cityMasterService.delete(city_Id);
+        return "redirect:/cities/list";
+    }
 }
