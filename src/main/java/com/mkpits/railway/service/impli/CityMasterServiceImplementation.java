@@ -24,4 +24,15 @@ public class CityMasterServiceImplementation implements CityMasterService {
     public City_Master save(City_Master cityMaster) {
         return cityRepository.save(cityMaster);
     }
+
+    @Override
+    public City_Master update(Integer city_Id) {
+        return cityRepository.findById(city_Id).get();
+    }
+
+    @Override
+    public void delete(Integer city_Id) {
+        cityRepository.deleteById(city_Id);
+
+    }
 }

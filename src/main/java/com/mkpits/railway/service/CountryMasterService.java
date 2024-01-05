@@ -5,4 +5,6 @@ import java.util.List;
 public interface CountryMasterService {
     List<Country_Master> findAllCountry();
     Country_Master save(Country_Master countryMaster);
+    Country_Master update(Integer country_Id);
+    void delete(Integer country_Id);
 }

@@ -25,4 +25,16 @@ public class CityMaster {
         model.addAttribute("cityMasterList",cityMasterList);
         return "/admin/displayCityList";
     }
+//    -----------------------Update------------------------------------
+
+//public City_Master update(Integer city_Id) {
+//    return cityRepository.findById(city_Id).get();
+//}
+////--------------------------------------------------------------
+//
+//
+//    public void delete(Integer city_Id) {
+//        cityRepository.deleteById(city_Id);
+//
+//    }
 }

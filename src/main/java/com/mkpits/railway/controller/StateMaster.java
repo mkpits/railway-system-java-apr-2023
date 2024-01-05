@@ -12,6 +12,7 @@ import java.util.List;
 @RequestMapping("/states")
 public class StateMaster {
     private StateMasterService stateMasterService;
+
     @Autowired
     public StateMaster(StateMasterService stateMasterService) {
         this.stateMasterService = stateMasterService;
@@ -36,7 +37,7 @@ public class StateMaster {
         stateMasterService.save(stateMaster);
         return "redirect:/states/list";
     }
-    //    --------------------- Display single State record by using state_id ---------------------
+    //    --------------------- Update single State record by using state_id ---------------------
     @GetMapping("/update")
     public String update(@RequestParam ("state_id") Integer stateId,Model model) {
         State_Master stateMaster=stateMasterService.update(stateId);
