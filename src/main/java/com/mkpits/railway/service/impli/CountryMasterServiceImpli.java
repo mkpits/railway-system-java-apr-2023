@@ -23,4 +23,14 @@ public class CountryMasterServiceImpli implements CountryMasterService {
     public Country_Master save(Country_Master countryMaster) {
         return countryRepository.save(countryMaster);
     }
+    @Override
+    public Country_Master update(Integer country_Id) {
+        return countryRepository.findById(country_Id).get();
+    }
+
+    @Override
+    public void delete(Integer country_Id) {
+        countryRepository.deleteById(country_Id);
+
+    }
 }

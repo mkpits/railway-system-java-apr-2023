@@ -5,5 +5,7 @@ import java.util.List;
 public interface CityMasterService {
     List<City_Master> findAllCity();
     City_Master save(City_Master cityMaster);
+    City_Master update(Integer city_Id);
+    void delete(Integer city_Id);
 
 }

@@ -35,7 +35,7 @@ public class StateMasterServiceImplementation implements StateMasterService {
     }
 
     @Override
-    public State_Master delete(Integer state_id) {
-       return findById(state_id);
+    public void delete(Integer state_id) {
+       stateRepository.deleteById(state_id);
     }
 }
