@@ -59,6 +59,7 @@
 </head>
 <body>
 <form th:action="@{addmaster}" th:object="${master}" method="post">
+    <fieldset>
     <h1>Railway Station Add Form</h1>
     <input type="hidden" th:field="*{station_id}">
     <input type="text" th:field="*{station_name}" name="name" placeholder="Enter the Station Name">
@@ -69,7 +70,15 @@
         <option value="local">Local</option>
     </select>
     <input type="text" th:field="*{station_code}" placeholder="Enter the station code">
-    <input type="datetime-local" th:field="*{station_update}" placeholder="Enter the last code">
+    <input type="datetime-local" th:field="*{station_update}" placeholder="Enter the Station DateTime">
+    </fieldset>
+    <fieldset>
+        <h2>Contact Details:</h2>
+        <input name="Contact_id" type="hidden" th:field="*{stationContact.contact_id}">
+        <input name="Mobile_no" type="text" th:field="*{stationContact.mobile_no}" placeholder="Enter the Mobile No">
+        <input name="Email_id" type="email" th:field="*{stationContact.email_id}" placeholder="Enter the Email Id">
+        <input name="Phone_no" type="text" th:field="*{stationContact.phone_no}" placeholder="Enter the Phone No">
+    </fieldset>
     <button type="submit" th:value="submit">Submit</button>
 </form>
 

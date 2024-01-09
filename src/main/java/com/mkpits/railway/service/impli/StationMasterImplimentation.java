@@ -21,7 +21,7 @@ public class StationMasterImplimentation implements StationMasterService {
 
     @Override
     @Transactional
-    public String saveStation(@ModelAttribute("master") StationMaster stationMaster) {
+    public String saveStation(StationMaster stationMaster) {
         stationMasterRepository.save(stationMaster);
         return "Data Inserted";
     }
