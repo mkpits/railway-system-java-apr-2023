@@ -8,8 +8,8 @@
 <body>
 
 <form th:action="@{/cities/save}" th:object="${cityMaster}"  method="post">
-    State id : <input type="number" th:field="*{city_Id}" readonly>
-    State Name : <input type="text" th:field="*{city_Name}">
+    City id : <input type="number" th:field="*{city_Id}" readonly>
+    CIty Name : <input type="text" th:field="*{city_Name}">
     <input type="submit" value="Submit">
 </form>
 </body>

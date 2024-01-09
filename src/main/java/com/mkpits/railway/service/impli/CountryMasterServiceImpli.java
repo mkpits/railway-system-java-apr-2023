@@ -1,5 +1,6 @@
 package com.mkpits.railway.service.impli;
 import com.mkpits.railway.model.Country_Master;
+import com.mkpits.railway.model.State_Form;
 import com.mkpits.railway.repository.CountryRepository;
 import com.mkpits.railway.service.CountryMasterService;
 import jakarta.transaction.Transactional;
@@ -17,6 +18,17 @@ public class CountryMasterServiceImpli implements CountryMasterService {
     public List<Country_Master> findAllCountry() {
         return countryRepository.findAll();
     }
+
+    @Override
+    public Country_Master findById(State_Form stateForm) {
+        return countryRepository.findById(stateForm.getCountry_Id()).get();
+    }
+
+//    @Override
+//    public Country_Master findById(Integer country_id) {
+//        return countryRepository.findById(country_id).get();
+//    }
+
 
     @Override
     @Transactional

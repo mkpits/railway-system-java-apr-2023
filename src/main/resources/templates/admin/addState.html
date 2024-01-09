@@ -6,11 +6,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<form th:action="@{/states/save}" th:object="${stateMaster}" method="post">
+    <label for="stateName">State Name:</label>
+    <input type="text" id="stateName" name="stateName" th:field="*{state_Name}" required>
 
-<form th:action="@{/states/save}" th:object="${stateMaster}"  method="post">
-    State id : <input type="number" th:field="*{state_Id}" readonly>
-    State Name : <input type="text" th:field="*{state_Name}">
-    <input type="submit" value="Submit">
+    <label for="countryId">Country:</label>
+    <select id="countryId" name="countryId" th:field="*{country_Id}" required>
+        <option th:each="country : ${countryMasterList}"
+                th:value="${country.country_Id}"
+                th:text="${country.country_Name}">
+        </option>
+    </select>
+    <button type="submit">Submit</button>
 </form>
 </body>
 </html>
