@@ -1,6 +1,8 @@
 package com.mkpits.railway.model;
 
 import jakarta.persistence.*;
+import org.antlr.v4.runtime.misc.NotNull;
+import org.springframework.lang.NonNull;
 
 import java.util.List;
 
@@ -12,8 +14,10 @@ public class State_Master {
     @Column(name = "state_id")
     private int state_Id;
     @Column(name = "state_name")
+    @NotNull
     private String state_Name;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.DETACH,CascadeType.REFRESH})
+    @NotNull
     @JoinColumn(name = "country_id",referencedColumnName = "country_Id")
     private Country_Master countryMaster;
 

@@ -37,7 +37,6 @@ public class StateMasterServiceImplementation implements StateMasterService {
     }
     @Override
     @Transactional
-//
     public State_Master save(State_Form stateForm) {
         State_Master stateMaster=new State_Master();
 
@@ -49,9 +48,21 @@ public class StateMasterServiceImplementation implements StateMasterService {
 
 //        the country_Master object can be set into the stateMaster
         stateMaster.setCountryMaster(countryMaster);
-
       return stateRepository.save(stateMaster);
     }
+
+//    @Override
+//    public State_Master update(State_Form stateForm) {
+//        State_Master stateMaster=stateRepository.findById(stateForm.getState_Id()).get();
+//        stateMaster.setState_Name(stateForm.getState_Name());
+//        //     If we want to find the country id it will be fetched from state_Form entity
+//        Country_Master countryMaster=countryRepository.findById(stateForm.getCountry_Id()).get();
+//
+////        the country_Master object can be set into the stateMaster
+//        stateMaster.setCountryMaster(countryMaster);
+//
+//        return stateRepository.save(stateMaster);
+//    }
 
 //    @Override
 //    @Transactional
@@ -63,6 +74,13 @@ public class StateMasterServiceImplementation implements StateMasterService {
     public State_Master update(Integer state_id) {
          return findById(state_id);
     }
+
+//    @Override
+//    public void deleteByCityName(State_Form stateForm,Integer stateId) {
+//        State_Master stateMaster1=stateRepository.findById(stateForm.getState_Id()).get();
+//
+//        stateRepository.delete(stateMaster1);
+//    }
 
     @Override
     public void delete(Integer state_id) {

@@ -11,6 +11,9 @@ public interface StateMasterService {
     State_Master save(State_Form stateForm);
 //    State_Master save(State_Master stateMaster);
     State_Master update(Integer state_id);
+//    State_Master update(State_Form stateForm);
+//    void deleteByCityName(State_Form stateMaster,Integer stateId);
+
     void delete(Integer state_id);
 
 }

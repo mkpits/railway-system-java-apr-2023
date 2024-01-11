@@ -43,10 +43,6 @@ public class StateMaster {
         model.addAttribute("countryMasterList",countryMasterList);
         State_Form stateForm=new State_Form();
         model.addAttribute("stateMaster",stateForm);
-        for (Country_Master countries:countryMasterList) {
-            System.out.println(countries.getCountry_Id()+" "+countries.getCountry_Name());
-        }
-        //return "/admin/addState";
         return "/admin/addState";
     }
 
@@ -60,23 +56,40 @@ public class StateMaster {
 //-----------------------------State crud operation save-------------------------------------
 //    @GetMapping("/add")
 //    public String insertData(Model model){
+//        List<Country_Master> countryMasterList=countryMasterService.findAllCountry();
+//        model.addAttribute("countryMasterList",countryMasterList);
 //        State_Master stateMaster=new State_Master();
 //        model.addAttribute("stateMaster",stateMaster);
 //        return "/admin/addState";
 //}
-
+//
 //    @PostMapping("/save")
 //    public String save(@ModelAttribute ("stateMaster") State_Master stateMaster) {
 //        stateMasterService.save(stateMaster);
 //        return "redirect:/states/list";
 //}
     //    --------------------- Update single State record by using state_id ---------------------
-    @GetMapping("/update")
-    public String update(@RequestParam ("state_id") Integer stateId,Model model) {
-        State_Master stateMaster=stateMasterService.update(stateId);
-        model.addAttribute("stateMaster",stateMaster);
-        return "/admin/addState";
-    }
+//    @GetMapping("/update")
+//    public String update(@RequestParam ("state_id") Integer stateId,Model model) {
+//        State_Master stateMaster=stateMasterService.update(stateId);
+//        model.addAttribute("stateMaster",stateMaster);
+//        return "/admin/addState";
+//    }
+//    ---------------------- Update by using mapping ------------------------------
+//@GetMapping("/update")
+//public String update(@RequestParam ("state_id") Integer stateId,Model model) {
+//    List<Country_Master> countryMasterList = countryMasterService.findAllCountry();
+//    model.addAttribute("countryMasterList", countryMasterList);
+//
+//    State_Master state = stateMasterService.findById(stateId);
+//    State_Form stateForm = new State_Form();
+//    stateForm.setState_Id(state.getState_Id());
+//    stateForm.setState_Name(state.getState_Name());
+//    stateForm.setCountry_Id(state.getCountryMaster().getCountry_Id());
+//    model.addAttribute("stateForm", stateForm);
+//    return "/admin/addState";
+//}
+
     //    --------------------- Delete single State record by using state_id ---------------------
 
     @GetMapping("/delete")
@@ -84,4 +97,9 @@ public class StateMaster {
         stateMasterService.delete(state_id);
         return "redirect:/states/list";
     }
+//@GetMapping("/delete")
+//public String delete(@RequestParam ("state_id") Integer state_id,State_Master stateMaster) {
+//    stateMasterService.deleteByCityName(stateMaster,state_id);
+//    return "redirect:/states/list";
+//}
 }

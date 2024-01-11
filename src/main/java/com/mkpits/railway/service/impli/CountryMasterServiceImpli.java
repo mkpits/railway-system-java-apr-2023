@@ -19,22 +19,27 @@ public class CountryMasterServiceImpli implements CountryMasterService {
         return countryRepository.findAll();
     }
 
-    @Override
-    public Country_Master findById(State_Form stateForm) {
-        return countryRepository.findById(stateForm.getCountry_Id()).get();
-    }
-
 //    @Override
-//    public Country_Master findById(Integer country_id) {
-//        return countryRepository.findById(country_id).get();
+//    public Country_Master findById(State_Form stateForm, Integer country) {
+//        return countryRepository.findById(stateForm.getCountry_Id()).get();
 //    }
 
+//    @Override
+//    public Country_Master findById(State_Form stateForm) {
+//        return countryRepository.findById(stateForm.getCountry_Id()).get();
+//    }
+
+    @Override
+    public Country_Master findById(Integer country_id) {
+        return countryRepository.findById(country_id).get();
+    }
 
     @Override
     @Transactional
     public Country_Master save(Country_Master countryMaster) {
         return countryRepository.save(countryMaster);
     }
+
     @Override
     public Country_Master update(Integer country_Id) {
         return countryRepository.findById(country_Id).get();
@@ -43,6 +48,5 @@ public class CountryMasterServiceImpli implements CountryMasterService {
     @Override
     public void delete(Integer country_Id) {
         countryRepository.deleteById(country_Id);
-
     }
 }

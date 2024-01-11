@@ -7,6 +7,8 @@
 </head>
 <body>
 <form th:action="@{/states/save}" th:object="${stateMaster}" method="post">
+    <label for="stateName">State Id:</label>
+    <input type="text" id="stateId" name="stateId" th:field="*{state_Id}" readonly>
     <label for="stateName">State Name:</label>
     <input type="text" id="stateName" name="stateName" th:field="*{state_Name}" required>
 
