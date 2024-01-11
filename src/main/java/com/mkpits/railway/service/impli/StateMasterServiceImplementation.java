@@ -22,7 +22,7 @@ public class StateMasterServiceImplementation implements StateMasterService {
 //        this.stateRepository = stateRepository;
 //    }
 
-    public StateMasterServiceImplementation(StateRepository stateRepository, CountryRepository countryRepository) {
+    public StateMasterServiceImplementation(StateRepository stateRepository, CountryRepository countryRepository){
         this.stateRepository = stateRepository;
         this.countryRepository = countryRepository;
     }
@@ -37,22 +37,34 @@ public class StateMasterServiceImplementation implements StateMasterService {
     }
     @Override
     @Transactional
-    public State_Master save(State_Form stateForm) {
-        State_Master stateMaster=new State_Master();
+    public void save(State_Form stateForm) {
+        if (stateForm.getState_Id()!= 0) {
+            // Update existing entity
+            State_Master existingState = stateRepository.findById(stateForm.getState_Id()).orElse(null);
+            if (existingState != null) {
+                // Update fields based on stateForm
+                existingState.setState_Name(stateForm.getState_Name());
+                existingState.setCountryMaster(countryRepository.findById(stateForm.getCountry_Id()).orElse(null));
+                // Update other fields as needed
+                stateRepository.save(existingState);
+            }
+        } else {
+            State_Master stateMaster = new State_Master();
 
 //        set the state_Name into the state_Master but it will be get from the state_form
-        stateMaster.setState_Name(stateForm.getState_Name());
+            stateMaster.setState_Name(stateForm.getState_Name());
 
 //     If we want to find the country id it will be fetched from state_Form entity
-        Country_Master countryMaster=countryRepository.findById(stateForm.getCountry_Id()).get();
+            Country_Master countryMaster = countryRepository.findById(stateForm.getCountry_Id()).get();
 
 //        the country_Master object can be set into the stateMaster
-        stateMaster.setCountryMaster(countryMaster);
-      return stateRepository.save(stateMaster);
+            stateMaster.setCountryMaster(countryMaster);
+             stateRepository.save(stateMaster);
+        }
     }
 
 //    @Override
-//    public State_Master update(State_Form stateForm) {
+//    public void update(State_Form stateForm) {
 //        State_Master stateMaster=stateRepository.findById(stateForm.getState_Id()).get();
 //        stateMaster.setState_Name(stateForm.getState_Name());
 //        //     If we want to find the country id it will be fetched from state_Form entity
@@ -61,7 +73,7 @@ public class StateMasterServiceImplementation implements StateMasterService {
 ////        the country_Master object can be set into the stateMaster
 //        stateMaster.setCountryMaster(countryMaster);
 //
-//        return stateRepository.save(stateMaster);
+////        return stateRepository.save(stateMaster);
 //    }
 
 //    @Override
@@ -70,16 +82,9 @@ public class StateMasterServiceImplementation implements StateMasterService {
 //        return stateRepository.save(stateMaster);
 //    }
 
-    @Override
-    public State_Master update(Integer state_id) {
-         return findById(state_id);
-    }
-
 //    @Override
-//    public void deleteByCityName(State_Form stateForm,Integer stateId) {
-//        State_Master stateMaster1=stateRepository.findById(stateForm.getState_Id()).get();
-//
-//        stateRepository.delete(stateMaster1);
+//    public State_Master update(Integer state_id) {
+//         return findById(state_id);
 //    }
 
     @Override
