@@ -13,6 +13,7 @@
     <table class="table table-bordered">
         <thead class="thead-dark">
         <tr>
+            <th>Index</th>
             <th>Country ID</th>
             <th>Country name</th>
             <th>Delete </th>
@@ -20,7 +21,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="count: ${countryMasterList}">
+        <tr th:each="count,con: ${countryMasterList}">
+            <td th:text="${con.index+1}">1</td>
             <td th:text="${count.country_Id}"></td>
             <td th:text="${count.country_Name}"></td>
 

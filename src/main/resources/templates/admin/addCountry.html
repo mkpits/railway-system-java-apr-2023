@@ -8,7 +8,7 @@
 <body>
 
 <form th:action="@{/countries/save}" th:object="${countryMaster}"  method="post">
-    Country id : <input type="number" th:field="*{country_Id}" readonly>
+     <input type="hidden" th:field="*{country_Id}" >
     Country Name : <input type="text" th:field="*{country_Name}">
     <input type="submit" value="Submit">
 </form>

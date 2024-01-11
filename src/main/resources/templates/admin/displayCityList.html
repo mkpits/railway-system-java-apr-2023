@@ -13,6 +13,7 @@
     <table class="table table-bordered">
         <thead class="thead-dark">
         <tr>
+            <th>Index</th>
             <th>City ID</th>
             <th>City name</th>
             <th>Delete </th>
@@ -20,7 +21,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="count: ${cityMasterList}">
+        <tr th:each="count,  cit: ${cityMasterList}">
+            <td th:text="${cit.index+1}">1</td>
             <td th:text="${count.city_Id}"></td>
             <td th:text="${count.city_Name}"></td>
             <td><a class="btn btn-primary" th:href="@{/cities/delete(city_Id=${count.city_Id})}">Delete</a></td>
