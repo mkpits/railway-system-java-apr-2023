@@ -27,7 +27,7 @@
             <td th:text="${count.state_Id}"></td>
             <td th:text="${count.state_Name}"></td>
 <!--            <td th:text="${count.countryMaster.country_Id}"></td>-->
-            <td th:text="${count.countryMaster != null ? count.countryMaster.country_Id:'N/A' }"></td>
+            <td th:text="${count.countryMaster != null ? count.countryMaster.country_Name:'N/A' }"></td>
             <td><a class="btn btn-danger" th:href="@{/states/delete(state_id=${count.state_Id})}">Delete</a></td>
             <td><a class="btn btn-success" th:href="@{/states/update(state_id=${count.state_Id})}">Update</a></td>
         </tr>

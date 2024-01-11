@@ -89,6 +89,21 @@ public class StateMaster {
 //    model.addAttribute("stateForm", stateForm);
 //    return "/admin/addState";
 //}
+@GetMapping("/update")
+public String update(@RequestParam("state_id") Integer stateId, Model model) {
+    List<Country_Master> countryMasterList = countryMasterService.findAllCountry();
+    model.addAttribute("countryMasterList", countryMasterList);
+
+    State_Master state = stateMasterService.findById(stateId);
+    State_Form stateForm = new State_Form();
+    stateForm.setState_Id(state.getState_Id());
+    stateForm.setState_Name(state.getState_Name());
+    stateForm.setCountry_Id(state.getCountryMaster().getCountry_Id());
+
+    model.addAttribute("stateMaster", stateForm); // Check the attribute name here
+//    stateMasterService.update(stateForm);
+    return "/admin/addState";
+}
 
     //    --------------------- Delete single State record by using state_id ---------------------
 
@@ -97,9 +112,5 @@ public class StateMaster {
         stateMasterService.delete(state_id);
         return "redirect:/states/list";
     }
-//@GetMapping("/delete")
-//public String delete(@RequestParam ("state_id") Integer state_id,State_Master stateMaster) {
-//    stateMasterService.deleteByCityName(stateMaster,state_id);
-//    return "redirect:/states/list";
-//}
+
 }
