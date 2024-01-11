@@ -33,9 +33,9 @@
             <td th:text="${sta.station_code}"></td>
             <td th:text="${sta.station_type}"></td>
             <td th:text="${sta.station_update}"></td>
-            <td th:text="${sta.stationContact != null ? sta.stationContact.mobile_no : ''}"></td>
-            <td th:text="${sta.stationContact != null ? sta.stationContact.email_id : ''}"></td>
-            <td th:text="${sta.stationContact != null ? sta.stationContact.phone_no : ''}"></td>
+            <td th:text="${sta.stationContact.mobile_no}"></td>
+            <td th:text="${sta.stationContact.email_id}"></td>
+            <td th:text="${sta.stationContact.phone_no}"></td>
             <td><a class="btn btn-danger" th:href="@{stationInformation/StationMasterShowPage/delete/{station_id}(station_id=${sta.station_id})}">Delete</a></td>
         <td><a class="btn btn-primary" th:href="@{/updatestudent(station_id=${sta.station_id})}">Update</a></td>
         </tr>
