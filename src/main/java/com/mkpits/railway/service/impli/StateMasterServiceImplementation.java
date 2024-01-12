@@ -18,10 +18,6 @@ public class StateMasterServiceImplementation implements StateMasterService {
     private CountryRepository countryRepository;
 
     @Autowired
-//    public StateMasterServiceImplementation(StateRepository stateRepository) {
-//        this.stateRepository = stateRepository;
-//    }
-
     public StateMasterServiceImplementation(StateRepository stateRepository, CountryRepository countryRepository){
         this.stateRepository = stateRepository;
         this.countryRepository = countryRepository;
@@ -62,30 +58,6 @@ public class StateMasterServiceImplementation implements StateMasterService {
              stateRepository.save(stateMaster);
         }
     }
-
-//    @Override
-//    public void update(State_Form stateForm) {
-//        State_Master stateMaster=stateRepository.findById(stateForm.getState_Id()).get();
-//        stateMaster.setState_Name(stateForm.getState_Name());
-//        //     If we want to find the country id it will be fetched from state_Form entity
-//        Country_Master countryMaster=countryRepository.findById(stateForm.getCountry_Id()).get();
-//
-////        the country_Master object can be set into the stateMaster
-//        stateMaster.setCountryMaster(countryMaster);
-//
-////        return stateRepository.save(stateMaster);
-//    }
-
-//    @Override
-//    @Transactional
-//    public State_Master save(State_Master stateMaster) {
-//        return stateRepository.save(stateMaster);
-//    }
-
-//    @Override
-//    public State_Master update(Integer state_id) {
-//         return findById(state_id);
-//    }
 
     @Override
     public void delete(Integer state_id) {

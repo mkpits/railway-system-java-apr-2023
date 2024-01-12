@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
@@ -22,10 +21,6 @@ public class StateMaster {
         this.stateMasterService = stateMasterService;
         this.countryMasterService = countryMasterService;
     }
-
-//        public StateMaster(StateMasterService stateMasterService) {
-//        this.stateMasterService = stateMasterService;
-//    }
 
 //    --------------------------- Display all the State records -------------------------------------------
     @GetMapping("/list")
@@ -53,42 +48,9 @@ public class StateMaster {
 //        System.out.println("Before : "+stateForm.getState_Name()+" "+stateForm.getCountry_Id());
         return "redirect:/states/list";
     }
-//-----------------------------State crud operation save-------------------------------------
-//    @GetMapping("/add")
-//    public String insertData(Model model){
-//        List<Country_Master> countryMasterList=countryMasterService.findAllCountry();
-//        model.addAttribute("countryMasterList",countryMasterList);
-//        State_Master stateMaster=new State_Master();
-//        model.addAttribute("stateMaster",stateMaster);
-//        return "/admin/addState";
-//}
-//
-//    @PostMapping("/save")
-//    public String save(@ModelAttribute ("stateMaster") State_Master stateMaster) {
-//        stateMasterService.save(stateMaster);
-//        return "redirect:/states/list";
-//}
-    //    --------------------- Update single State record by using state_id ---------------------
-//    @GetMapping("/update")
-//    public String update(@RequestParam ("state_id") Integer stateId,Model model) {
-//        State_Master stateMaster=stateMasterService.update(stateId);
-//        model.addAttribute("stateMaster",stateMaster);
-//        return "/admin/addState";
-//    }
+
 //    ---------------------- Update by using mapping ------------------------------
-//@GetMapping("/update")
-//public String update(@RequestParam ("state_id") Integer stateId,Model model) {
-//    List<Country_Master> countryMasterList = countryMasterService.findAllCountry();
-//    model.addAttribute("countryMasterList", countryMasterList);
-//
-//    State_Master state = stateMasterService.findById(stateId);
-//    State_Form stateForm = new State_Form();
-//    stateForm.setState_Id(state.getState_Id());
-//    stateForm.setState_Name(state.getState_Name());
-//    stateForm.setCountry_Id(state.getCountryMaster().getCountry_Id());
-//    model.addAttribute("stateForm", stateForm);
-//    return "/admin/addState";
-//}
+
 @GetMapping("/update")
 public String update(@RequestParam("state_id") Integer stateId, Model model) {
     List<Country_Master> countryMasterList = countryMasterService.findAllCountry();
@@ -104,8 +66,7 @@ public String update(@RequestParam("state_id") Integer stateId, Model model) {
 //    stateMasterService.update(stateForm);
     return "/admin/addState";
 }
-
-    //    --------------------- Delete single State record by using state_id ---------------------
+    //    --------------------- Delete single State record by using state_id in mapping concept---------------------
 
     @GetMapping("/delete")
     public String delete(@RequestParam ("state_id") Integer state_id) {
