@@ -41,7 +41,6 @@ public class CityMasterServiceImplementation implements CityMasterService {
            City_Master existingCityMaster=cityRepository.findById(cityForm.getCity_Id()).orElse(null);
            if(existingCityMaster!=null) {
                existingCityMaster.setCity_Name(cityForm.getCity_Name());
-
                State_Master stateMaster = stateRepository.findById(cityForm.getState_Id()).orElse(null);
                existingCityMaster.setStateMaster(stateMaster);
 

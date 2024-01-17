@@ -2,7 +2,9 @@ package com.mkpits.railway.model;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.sql.Date;
+
+//import java.util.Date;
 
 @Entity
 @Table(name = "User_Details")

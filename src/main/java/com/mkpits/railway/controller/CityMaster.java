@@ -20,10 +20,6 @@ public class CityMaster {
     private CityMasterService cityMasterService;
     private StateMasterService stateMasterService;
     @Autowired
-//    public CityMaster(CityMasterService cityMasterService) {
-//        this.cityMasterService = cityMasterService;
-//    }
-
     public CityMaster(CityMasterService cityMasterService, StateMasterService stateMasterService) {
         this.cityMasterService = cityMasterService;
         this.stateMasterService = stateMasterService;
@@ -61,7 +57,6 @@ public class CityMaster {
        cityForm.setCity_Id(cityMaster.getCity_Id());
        cityForm.setCity_Name(cityMaster.getCity_Name());
        cityForm.setState_Id(cityMaster.getStateMaster().getState_Id());
-
         model.addAttribute("cityMaster",cityForm);
         return "/admin/addCity";
     }

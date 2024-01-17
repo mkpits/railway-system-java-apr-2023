@@ -17,12 +17,28 @@ public class UserServiceImplimentation implements UserService {
         this.userRepository = userRepository;
     }
     @Override
-    @Transactional
-    public User saveData(User user) {
-        return userRepository.save(user);
-    }
-    @Override
     public List<User> findAllUserList() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public User findById(Integer user_Id) {
+        return userRepository.findById(user_Id).get();
+    }
+
+    @Override
+    @Transactional
+    public void save(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
+    public void update(Integer user_Id) {
+        findById(user_Id);
+    }
+
+    @Override
+    public void delete(Integer user_Id) {
+        userRepository.deleteById(user_Id);
     }
 }

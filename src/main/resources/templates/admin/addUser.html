@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>RegisterUser</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<form th:action="@{/users/save}" th:object="${user}"  method="post">
+    <label for="userid">User Id:</label>
+    <input type="text" id="userid" name="userid" th:field="*{user_Id}" readonly>
+
+    <label for="first_Name">First Name:</label>
+    <input type="text" id="first_Name" name="first_Name" th:field="*{first_Name}" required>
+
+    <label for="middle_Name">Middle Name:</label>
+    <input type="text" id="middle_Name" name="middle_Name" th:field="*{middle_Name}" required>
+
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" name="last_name" th:field="*{last_Name}" required>
+
+    <label for="date">Date Of Birth:</label>
+    <input type="date" id="date" name="date" th:field="*{date_Of_Birth}" required>
+
+    <label>Gender:</label>
+    <input type="radio" id="male" name="gender" th:value="Male" th:field="*{gender}" >
+    <input type="radio" id="female" name="gender" th:value="Female" th:field="*{gender}" >
+
+<!--    <input type="radio" id="ignore" name="${shiftDto.getFullName()}" value="0" checked>-->
+<!--    <label for="ignore">Ignore</label>-->
+<!--    <input type="radio" id="mgDay" name="${shiftDto.getFullName()}" value="1">-->
+<!--    <label for="mgDay">MG Day</label>-->
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" th:field="*{email}" required>
+
+    <label for="mobile">Mobile No:</label>
+    <input type="number" id="mobile" name="mobile" th:field="*{mobile_No}" >
+
+<!--    <label for="stateId">State:</label>-->
+<!--    <select id="stateId" name="stateId" th:field="*{state_Id}" required>-->
+<!--        <option th:each="state : ${stateMasterList}"-->
+<!--                th:value="${state.state_Id}"-->
+<!--                th:text="${state.state_Name}">-->
+<!--        </option>-->
+<!--    </select>-->
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

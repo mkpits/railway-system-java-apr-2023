@@ -16,6 +16,7 @@
             <th>Index</th>
             <th>City ID</th>
             <th>City name</th>
+            <th>State ID</th>
             <th>Delete </th>
             <th>Update </th>
         </tr>
@@ -25,6 +26,8 @@
             <td th:text="${cit.index+1}">1</td>
             <td th:text="${count.city_Id}"></td>
             <td th:text="${count.city_Name}"></td>
+            <td th:text="${count.stateMaster != null ? count.stateMaster.state_Id:'N/A' }"></td>
+
             <td><a class="btn btn-primary" th:href="@{/cities/delete(city_Id=${count.city_Id})}">Delete</a></td>
             <td><a class="btn btn-primary" th:href="@{/cities/update(city_Id=${count.city_Id})}">Update</a></td>
         </tr>
