@@ -4,6 +4,7 @@ import com.mkpits.railway.model.Country_Master;
 import com.mkpits.railway.model.State_Form;
 import com.mkpits.railway.model.State_Master;
 import com.mkpits.railway.service.CountryMasterService;
+import com.mkpits.railway.service.StateMasterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +16,13 @@ import java.util.List;
 @RequestMapping("/countries")
 public class CountryMasterController {
     private CountryMasterService countryMasterService;
+    private StateMasterService stateMasterService;
     @Autowired
-    public CountryMasterController(CountryMasterService countryMasterService) {
+    public CountryMasterController(CountryMasterService countryMasterService,StateMasterService stateMasterService) {
         this.countryMasterService = countryMasterService;
+        this.stateMasterService=stateMasterService;
     }
+
 //    --------------------- Display all the country records -------------------------------
     @GetMapping("/list")
     public String findAllCountry(Model model) {
@@ -26,6 +30,7 @@ public class CountryMasterController {
          model.addAttribute("countryMasterList",countryMasterList);
          return "/admin/displayCountryList";
     }
+
 //    ----------------------- Save the country record --------------------------
     @GetMapping("/add")
     public String insertData(Model model){
@@ -33,11 +38,13 @@ public class CountryMasterController {
         model.addAttribute("countryMaster",countryMaster);
         return "/admin/addCountry";
     }
+
     @PostMapping("/save")
     public String save(@ModelAttribute ("countryMaster") Country_Master countryMaster) {
          countryMasterService.save(countryMaster);
         return "redirect:/countries/list";
     }
+
 //    ----------------------- Update the record by using country_id ----------------------
 
     @GetMapping("/update")
@@ -52,7 +59,5 @@ public class CountryMasterController {
     public String delete(@RequestParam ("country_Id") Integer country_Id) {
         countryMasterService.delete(country_Id);
         return "redirect:/countries/list";
-
     }
-
 }

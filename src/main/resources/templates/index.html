@@ -1,48 +1,66 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>indexPage</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>About Country & Cities Sample Spring MVC App</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="../../static/plugins/fontawesome-free/css/all.min.css" th:href="@{/static/plugins/fontawesome-free/css/all.min.css}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../static/css/adminlte.min.css" th:href="@{/static/css/adminlte.min.css}">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body>
-<form >
-    <div class="col-lg-3"></div>
-    <div class="col-lg-6 center">
-        <a th:href="@{/users/list}">Add</a>
-        <table class="table table-hover">
-            <tr>
-                <th>User Id</th>
-                <th>First Name</th>
-                <th>Middle Name</th>
-                <th>Last Name</th>
-                <th>Date of Birth </th>
-                <th>Gender</th>
-                <th>Email</th>
-                <th>Mobile Number</th>
-            </tr>
-            <tr th:each="count:${userList}">
-                <td th:text="${count.user_Id}"></td>
-                <td th:text="${count.first_Name}"></td>
-                <td th:text="${count.middle_Name}"></td>
-                <td th:text="${count.last_Name}"></td>
-                <td th:text="${count.date_Of_Birth}"></td>
-                <td th:text="${count.gender}"></td>
-                <td th:text="${count.email}"></td>
-                <td th:text="${count.mobile_No}"></td>
-            </tr>
-        </table>
-    </div>
+<body class="hold-transition sidebar-mini">
 
-    <!--    <label for="country">Select a country:</label>-->
-    <!--    <select id="country" name="country">-->
-    <!--        <option th:each="country : ${countryList}"-->
-    <!--                th:value="${country.country_id}" -->
-    <!--                th:text="${country.country_Name}">-->
+<div class="wrapper">
 
-    <!--        </option>-->
-    <!--    </select>-->
-</form>
+    <nav th:replace="fragments/mainLayout :: header">
+    </nav>
+
+    <aside th:replace="fragments/header :: sidebar">
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <main th:insert="fragments/mainLayout :: content(title=${pageTitle}, value=~{ :: #about_card})">
+
+        <!-- Main content -->
+        <div class="content">
+            <div  class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        <div class="card card-info card-outline" id="about_card">
+                            <div class="card-header">
+                                <h5 class="card-title m-0">About Country & City Sample App</h5>
+                            </div>
+                            <div class="card-body">
+
+                                <p class="card-text">
+                                    A Sample Spring MVC CRUD Application with Thymeleaf, HTML5, CSS3 and Bootstrap4-based AdminLTE v3 template.
+                                </p>
+                                <p>In this application, you can see a demonstration of using <strong>Spring Boot</strong>, <strong>Spring Data JPA</strong>, <strong>MySQL</strong>, <strong>Spring MVC</strong>, <strong>Thymeleaf</strong>, <strong>HTML5</strong>, <strong>CSS3</strong> and <strong>Bootstrap</strong> v4 altogether to build a foundational web application with an admin theme.</p>
+
+                                <p>Currently code in this repo includes entity models for inter-related Country and City database tables, as well as controllers and views for country and city records.</p>
+
+                                <p>MySQL database SQL dump is at the root directory in a file called <code>countrycity.sql</code>.</p>
+
+                                <p>Used in "Getting Started with Web Development" tutorials and training courses by <a href="https://gokhan.ozar.net" title="All Systems GO -  a few of the things Gökhan Ozar does">Gökhan Ozar</a> </p>
+
+                            </div><!--//.card-body-->
+                        </div><!--//.card-->
+                    </div><!-- /.col-sm-12 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div> <!-- /.content -->
+
+    </main>
+
+    <footer th:replace="fragments/mainLayout :: footer(~{})">
+    </footer>
+
+</div><!-- ./wrapper -->
 </body>
 </html>

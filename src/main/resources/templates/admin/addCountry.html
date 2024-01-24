@@ -1,16 +1,104 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>state</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="https://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>state</title>-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">-->
+<!--</head>-->
+<!--<body>-->
 
-<form th:action="@{/countries/save}" th:object="${countryMaster}"  method="post">
-     <input type="hidden" th:field="*{country_Id}" >
-    Country Name : <input type="text" th:field="*{country_Name}">
-    <input type="submit" value="Submit">
-</form>
+<!--<form th:action="@{/countries/save}" th:object="${countryMaster}"  method="post">-->
+<!--     <input type="hidden" th:field="*{country_Id}" >-->
+<!--    Country Name : <input type="text" th:field="*{country_Name}">-->
+<!--    <input type="submit" value="Submit">-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org/">
+<!--/* Title of this template will be passed to the head fragment along with custom links and scripts */-->
+<head th:replace="fragments/mainLayout :: head(~{this :: title}, ~{this :: .custom-link})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Country</title>
+
+    <!-- Select2 -->
+    <link class="custom-link" rel="stylesheet" href="../../static/plugins/select2/css/select2.min.css" th:href="@{/static/plugins/select2/css/select2.min.css}">
+    <link class="custom-link" rel="stylesheet" href="../../static/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css" th:href="@{/static/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css}">
+
+</head>
+<body class="hold-transition sidebar-mini">
+
+<div class="wrapper">
+
+    <nav th:replace="fragments/mainLayout :: header">
+    </nav>
+
+    <aside th:replace="fragments/mainLayout :: sidebar">
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <main th:insert="fragments/mainLayout :: content(title=${pageTitle}, value=~{ :: #country_form_card})">
+
+        <!-- Main content -->
+        <section class="content">
+            <div  class="container-fluid">
+                <div class="card card-info" id="country_form_card">
+                    <div class="card-header">
+                        <h3 class="card-title" id="module_title">New Country</h3>
+                    </div>
+                    <form action="#"
+                          th:action="@{/countries/save}"
+                          th:object="${countryMaster}" method="post">
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <label for="countryID" class="col-form-label">Country ID</label>
+                                <input
+                                        type="text" th:field="*{country_Id}" class="form-control" id="countryID"
+                                         readonly>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="countryName" class="col-form-label">Country Name</label>
+                                <input
+                                        type="text" th:field="*{country_Name}" class="form-control" id="countryName"
+                                        placeholder="Example: Argentina">
+<!--                                <span-->
+<!--                                        th:if="${#fields.hasErrors('countryName')}" th:errors="*{country_Name}"-->
+<!--                                        class="text-danger"></span>-->
+                            </div>
+                        </div>
+                        <div class="card-footer">
+
+                            <input type="submit" class="btn btn-primary" value="Save">
+                            <a href="/countries/list" class="btn btn-default float-right">Cancel</a>
+
+                        </div>
+                    </form>
+                </div><!--//.card -->
+            </div><!-- /.container-fluid -->
+        </section> <!-- /.content -->
+    </main>
+
+
+    <footer th:replace="fragments/mainLayout :: footer(~{this :: .custom-script})">
+        Footer
+
+        <!-- DataTables -->
+        <script class="custom-script" src="../../static/plugins/select2/js/select2.full.min.js" th:src="@{/static/plugins/select2/js/select2.full.min.js}"></script>
+
+        <script class="custom-script">
+            $(function () {
+                $('.select2bs4').select2({
+                    theme: 'bootstrap4'
+                });
+
+            });
+        </script>
+    </footer>
+
+</div><!-- ./wrapper -->
+
 </body>
 </html>
